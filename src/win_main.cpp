@@ -36,7 +36,7 @@ int main()
   // TODO: Initialize the pid variable.
   auto kp = 0.225;
   auto ki = 0.0; 
-  double kd = 3.0;
+  double kd = 8.0;
 
   pid.Init(kp, ki, kd);
 
@@ -44,7 +44,7 @@ int main()
     // "42" at the start of the message means there's a websocket message event.
     // The 4 signifies a websocket message
     // The 2 signifies a websocket event
-    if (length && length >= 2 && data[0] == '4' && data[1] == '2')
+    if (length && length > 2 && data[0] == '4' && data[1] == '2')
     {
       auto s = hasData(std::string(data).substr(0, length));
       if (s != "") {

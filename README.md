@@ -3,7 +3,15 @@ Self-Driving Car Engineer Nanodegree Program
 
 ---
 
-## The P, D, I terms
+## Effects of P, I, D components on the trajectory control
+
+- The P-component (proportional) term introduces a proportional correction of the error. The larger the term the stronger the correction of the error will be. It turns out that, in this case, this value is crucial for the behavior of the controller. Given a proper value of the P-parameter the car can be made to meet specification, although the driving style is quite questionable...    
+- The D-component (differential) term decreases the tendency of the P-controller to oscillate around the target value. Using a PD-controller with properly chosen coefficients make the trajectory of the car smoother. Growing values of the D-coefficient make the car drive more stable during straight portions of the track and make very sharp almost discrete twists when turning.     
+- The I-component (integral) term compensates systematic bias in the system. The influence of this term to the behavior of the car was barely observable. The conclusion is that there is no systematic bias to compensate for in the system.
+
+## Choosing the final values of P, I, D hyperparameters
+
+The values were determined by manual tuning. I started with values P, I, D = (0.1, 0, 0) and simultaneously modified the P and D terms until the car trajectory became reasonably stable. The "I-component" did not have much influence on the car trajectory, therefore the value was set to a very small number. The final values are P, I, D = (0.225, 0., 8.)
 
 ## Dependencies
 
